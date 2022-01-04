@@ -24,14 +24,16 @@ What is recommender System?
 - For example, Netflix uses recommendation system. It suggest people new movies according to their past activities that are like watching and voting movies.
 - The purpose of recommender systems is recommending new things that are not seen before from people.
 
-#### User based collaborative filtering:
-- Collaborative filtering is making recommendations according to combination of your experience and experiences of other people.
-- In this system, each row of matrix is user. Therefore, comparing and finding similarity between of them is computationaly hard and spend too much computational power.
-- Also, habits of people can be changed. Therefore making correct and useful recommendation can be hard in time.
-- In order to solve the shortcomings of this system we use Item based collaborative filtering.
-#### Item based collaborative filtering:
-- In this system, instead of finding relationship between users, used items like movies or stuffs are compared with each others.
-- In user based recommendation systems, habits of users can be changed. This situation makes hard to recommendation. However, in item based recommendation systems, movies or stuffs does not change. Therefore recommendation is easier.
+### Recommender systems:
+#### Content based filtering:
+- Content-Based recommender system tries to guess the features or behavior of a user given the item’s features, he/she reacts positively to.
+- Once, we know the likings of the user we can embed user's choice in an embedding space using the feature vector generated and recommend accordingly.
+#### collaborative filtering:
+- Collaborative does not need the features of the items to be given. Every user and item is described by a feature vector or embedding.
+- It creates embedding for both users and items on its own. It embeds both users and items in the same embedding space.
+- It considers other users’ reactions while recommending a particular user. It notes which items a particular user likes and also the items that the users with behavior and likings like him/her likes, to recommend items to that user.
+- It collects user feedbacks on different items and uses them for recommendations.
+
 
 
 ## Objective:
