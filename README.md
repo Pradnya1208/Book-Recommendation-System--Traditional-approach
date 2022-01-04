@@ -79,6 +79,42 @@ This dataset Contains 278,858 users (anonymized but with demographic information
 | img_* | Book cover image|
 
 
+## Implementation:
+
+**Libraries:**  `NumPy` `pandas` `nltk` `matplotlib` `sklearn` 
+
+### Content Based Filtering (Title, Author, Publisher, Genre):
+
+```
+common_books['index'] = [i for i in range(common_books.shape[0])]
+target_cols = ['book_title','book_author','publisher','Category']
+common_books['combined_features'] = [' '.join(common_books[target_cols].iloc[i,].values) for i in range(common_books[target_cols].shape[0])]
+cv = CountVectorizer()
+count_matrix = cv.fit_transform(common_books['combined_features'])
+cosine_sim = cosine_similarity(count_matrix)
+            
+x_counts_df  = pd.DataFrame(count_matrix.toarray())
+x_counts_df.columns = cv.get_feature_names()
+cosine_data_ = pd.DataFrame(cosine_sim)
+cosine_data_.index = common_books.book_title
+cosine_data_.columns = common_books.book_title
+
+index = common_books[common_books['book_title'] == book_title]['index'].values[0]
+sim_books = list(enumerate(cosine_sim[index]))
+sorted_sim_books = sorted(sim_books,key=lambda x:x[1],
+                                      reverse=True)[1:6]
+            
+books = []
+for i in range(len(sorted_sim_books)):
+    books.append(common_books[common_books['index'] == sorted_sim_books[i][0]]['book_title'].item())
+```
+> Note: We have separated rare and common books on the basis of number of user ratings.
+
+
+
+
+
+
 
 [1]: https://github.com/Pradnya1208
 [2]: https://www.linkedin.com/in/pradnya-patil-b049161ba/
