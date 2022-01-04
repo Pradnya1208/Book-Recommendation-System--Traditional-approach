@@ -209,8 +209,33 @@ distances, indices = model_knn.kneighbors(user_book_df.iloc[book_index,:].values
 
 ### Comparing all the methods:
 **Results for the book: "Harry Potter and the Order of the Phoenix (Book 5)"**
-<br>
+<br><br>
 <img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/comp.PNG?raw=true">
+
+### Lessons Learned
+`Recommendation Systems`
+`Collaborative filtering`
+`Content based filtering`
+`Similarity Metrics`
+
+
+
+
+## Related:
+[Book recommendation using cosine similarity](https://github.com/Pradnya1208/Book-recommender-using-Cosine-similarity/blob/main/Book%20recommender(based%20on%20cosine%20similarity%20-smaller%20dataset).ipynb)
+
+
+## References:
+[Recommendation systems](https://towardsdatascience.com/introduction-to-recommender-systems-1-971bd274f421)
+### Feedback
+
+If you have any feedback, please reach out at pradnyapatil671@gmail.com
+
+
+### 🚀 About Me
+#### Hi, I'm Pradnya! 👋
+I am an AI Enthusiast and  Data science & ML practitioner
+
 
 
 
