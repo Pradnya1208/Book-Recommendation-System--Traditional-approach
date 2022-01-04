@@ -112,7 +112,7 @@ for i in range(len(sorted_sim_books)):
 
 ##### Recommendations:
 <br>
-![content](https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/contentbased.PNG?raw=true)
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/contentbased.PNG?raw=true">
 
 ```
 cosine_data_["The Da Vinci Code"].sort_values(ascending = False)
@@ -159,7 +159,7 @@ common_books = common_books.drop_duplicates(subset = ["book_title"])
 ```
 #### Recommendations:
 <br>
-![Summary](https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/summary.PNG?raw=true)
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/summary.PNG?raw=true">
 
 
 
