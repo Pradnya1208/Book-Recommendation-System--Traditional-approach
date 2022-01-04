@@ -101,7 +101,8 @@ cosine_data_.columns = common_books.book_title
 
 index = common_books[common_books['book_title'] == book_title]['index'].values[0]
 sim_books = list(enumerate(cosine_sim[index]))
-sorted_sim_books = sorted(sim_books,key=lambda x:x[1], reverse=True)[1:6]
+sorted_sim_books = sorted(sim_books,key=lambda x:x[1],
+                                      reverse=True)[1:6]
             
 books = []
 for i in range(len(sorted_sim_books)):
@@ -109,6 +110,56 @@ for i in range(len(sorted_sim_books)):
 ```
 > Note: We have separated rare and common books on the basis of number of user ratings.
 
+##### Recommendations:
+<br>
+![content](https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/contentbased.PNG?raw=true)
+
+```
+cosine_data_["The Da Vinci Code"].sort_values(ascending = False)
+```
+```
+book_title
+The Da Vinci Code                                   1.000000
+The Catcher in the Rye                              0.426401
+The Client                                          0.400892
+The King of Torts                                   0.353553
+A Map of the World                                  0.335410
+```
+
+### Content based Filtering based on Summary of the book:
+```
+common_books = common_books.drop_duplicates(subset = ["book_title"])
+            common_books.reset_index(inplace = True)
+            common_books['index'] = [i for i in range(common_books.shape[0])]
+            
+            summary_filtered = []
+            for i in common_books['Summary']:
+                
+                i = re.sub("[^a-zA-Z]"," ",i).lower()
+                i = nltk.word_tokenize(i)
+                i = [word for word in i if not word in set(stopwords.words("english"))]
+                i = " ".join(i)
+                summary_filtered.append(i)
+            
+            common_books['Summary'] = summary_filtered   
+            cv = CountVectorizer()
+            
+            count_matrix = cv.fit_transform(common_books['Summary'])
+            
+            cosine_sim = cosine_similarity(count_matrix)
+            
+            
+            index = common_books[common_books['book_title'] == book_title]['index'].values[0]
+            sim_books = list(enumerate(cosine_sim[index]))
+            sorted_sim_books = sorted(sim_books,key=lambda x:x[1],reverse=True)[1:6]
+            
+            books = []
+            for i in range(len(sorted_sim_books)):
+                books.append(common_books[common_books['index'] == sorted_sim_books[i][0]]['book_title'].item())
+```
+#### Recommendations:
+<br>
+![Summary](https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/summary.PNG?raw=true)
 
 
 
