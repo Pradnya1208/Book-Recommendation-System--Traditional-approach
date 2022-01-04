@@ -23,7 +23,6 @@ What is recommender System?
 - For example, Netflix uses recommendation system. It suggest people new movies according to their past activities that are like watching and voting movies.
 - The purpose of recommender systems is recommending new things that are not seen before from people.
 
-### Recommender systems:
 #### User based collaborative filtering:
 - Collaborative filtering is making recommendations according to combination of your experience and experiences of other people.
 - In this system, each row of matrix is user. Therefore, comparing and finding similarity between of them is computationaly hard and spend too much computational power.
