@@ -48,7 +48,7 @@ Similarity metrics used mostly:<br>
 - **Dot Product**: The cosine angle and magnitude of the vectors also matters.
 - **Euclidian Distance**: The elementwise squared distance between two vectors
 - **Pearson Similarity**: It is a coefficient given by:
-<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/pearson.PNG?raw=true" width="40%">
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/pearson.PNG?raw=true" width="20%">
 
 
 
