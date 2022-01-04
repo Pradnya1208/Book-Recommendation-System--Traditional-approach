@@ -112,7 +112,7 @@ for i in range(len(sorted_sim_books)):
 
 ##### Recommendations:
 <br>
-<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/contentbased.PNG?raw=true">
+![content](https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/contentbased.PNG?raw=true)
 
 ```
 cosine_data_["The Da Vinci Code"].sort_values(ascending = False)
@@ -129,41 +129,83 @@ A Map of the World                                  0.335410
 ### Content based Filtering based on Summary of the book:
 ```
 common_books = common_books.drop_duplicates(subset = ["book_title"])
-            common_books.reset_index(inplace = True)
-            common_books['index'] = [i for i in range(common_books.shape[0])]
+common_books.reset_index(inplace = True)
+common_books['index'] = [i for i in range(common_books.shape[0])]
             
-            summary_filtered = []
-            for i in common_books['Summary']:
+summary_filtered = []
+for i in common_books['Summary']:
                 
-                i = re.sub("[^a-zA-Z]"," ",i).lower()
-                i = nltk.word_tokenize(i)
-                i = [word for word in i if not word in set(stopwords.words("english"))]
-                i = " ".join(i)
-                summary_filtered.append(i)
+    i = re.sub("[^a-zA-Z]"," ",i).lower()
+    i = nltk.word_tokenize(i)
+    i = [word for word in i if not word in set(stopwords.words("english"))]
+    i = " ".join(i)
+    summary_filtered.append(i)
             
-            common_books['Summary'] = summary_filtered   
-            cv = CountVectorizer()
+common_books['Summary'] = summary_filtered   
+cv = CountVectorizer()
             
-            count_matrix = cv.fit_transform(common_books['Summary'])
+count_matrix = cv.fit_transform(common_books['Summary'])
             
-            cosine_sim = cosine_similarity(count_matrix)
+cosine_sim = cosine_similarity(count_matrix)
             
             
-            index = common_books[common_books['book_title'] == book_title]['index'].values[0]
-            sim_books = list(enumerate(cosine_sim[index]))
-            sorted_sim_books = sorted(sim_books,key=lambda x:x[1],reverse=True)[1:6]
+index = common_books[common_books['book_title'] == book_title]['index'].values[0]
+sim_books = list(enumerate(cosine_sim[index]))
+sorted_sim_books = sorted(sim_books,key=lambda x:x[1],reverse=True)[1:6]
             
-            books = []
-            for i in range(len(sorted_sim_books)):
-                books.append(common_books[common_books['index'] == sorted_sim_books[i][0]]['book_title'].item())
+books = []
+for i in range(len(sorted_sim_books)):
+    books.append(common_books[common_books['index'] == sorted_sim_books[i][0]]['book_title'].item())
 ```
 #### Recommendations:
 <br>
 <img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/summary.PNG?raw=true">
 
+### Item based collaborative filtering:
+```
+user_book_df = common_books.pivot_table(index=['user_id'],
+                                                    columns=['book_title'],
+                                                    values='rating')
+#print(user_book_df)
+        
+book = user_book_df[book_title]
+recom_data = pd.DataFrame(user_book_df.corrwith(book). \
+                                      sort_values(ascending=False)).reset_index(drop=False)
+#print(recom_data)
+            
+if book_title in [book for book in recom_data['book_title']]:
+    recom_data = recom_data.drop(recom_data[recom_data['book_title'] == book_title].index[0])
+                
+    low_rating = []
+for i in recom_data['book_title']:
+    if df[df['book_title'] == i]['rating'].mean() < 5:
+        low_rating.append(i)
+                    
+if recom_data.shape[0] - len(low_rating) > 5:
+    recom_data = recom_data[~recom_data['book_title'].isin(low_rating)]
+            
+recom_data = recom_data[0:5]    
+recom_data.columns = ['book_title','corr']
+```
 
+#### Recommendations:<br>
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/itembased.PNG?raw=true">
 
+### Content based filtering using Nearest Neighbors:
+```
+user_book_df = common_books.pivot_table(index=['book_title'],
+                                                    columns=['user_id'],
+                                                    values='rating').fillna(0)
+# creating sparace matrix
+user_book_df_matrix = csr_matrix(user_book_df.values)
+model_knn = NearestNeighbors(metric="cosine", algorithm="brute")
+model_knn.fit(user_book_df_matrix)
+book_index= user_book_df.index.to_list().index(book_title)
+distances, indices = model_knn.kneighbors(user_book_df.iloc[book_index,:].values.reshape(1,-1), n_neighbors =6)
+```
 
+#### Recommendations:
+<img src= "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/knn.PNG?raw=true">
 
 
 [1]: https://github.com/Pradnya1208
