@@ -34,7 +34,12 @@ What is recommender System?
 - It considers other users’ reactions while recommending a particular user. It notes which items a particular user likes and also the items that the users with behavior and likings like him/her likes, to recommend items to that user.
 - It collects user feedbacks on different items and uses them for recommendations.
 
-
+#### Model-based collaborative filtering
+- Remembering the matrix is not required here. From the matrix, we try to learn how a specific user or an item behaves. We compress the large interaction matrix using dimensional Reduction or using clustering algorithms. In this type, We fit machine learning models and try to predict how many ratings will a user give a product. 
+- There are several methods:<br>
+`Clustering algorithms`<br>
+`Matrix Factorization based algorithm`<br>
+`Deep Learning methods`<br>
 
 ## Objective:
 This project aims at finding the multiple ways that our data can recommend books.
