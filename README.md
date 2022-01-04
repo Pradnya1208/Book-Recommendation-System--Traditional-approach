@@ -88,7 +88,8 @@ This dataset Contains 278,858 users (anonymized but with demographic information
 ```
 common_books['index'] = [i for i in range(common_books.shape[0])]
 target_cols = ['book_title','book_author','publisher','Category']
-common_books['combined_features'] = [' '.join(common_books[target_cols].iloc[i,].values) for i in range(common_books[target_cols].shape[0])]
+common_books['combined_features'] = [' '.join(common_books[target_cols].iloc[i,].values) 
+for i in range(common_books[target_cols].shape[0])]
 cv = CountVectorizer()
 count_matrix = cv.fit_transform(common_books['combined_features'])
 cosine_sim = cosine_similarity(count_matrix)
@@ -101,8 +102,7 @@ cosine_data_.columns = common_books.book_title
 
 index = common_books[common_books['book_title'] == book_title]['index'].values[0]
 sim_books = list(enumerate(cosine_sim[index]))
-sorted_sim_books = sorted(sim_books,key=lambda x:x[1],
-                                      reverse=True)[1:6]
+sorted_sim_books = sorted(sim_books,key=lambda x:x[1], reverse=True)[1:6]
             
 books = []
 for i in range(len(sorted_sim_books)):
