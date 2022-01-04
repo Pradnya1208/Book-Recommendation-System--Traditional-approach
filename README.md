@@ -17,7 +17,8 @@
 <div align = "center"> <img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/gif.gif?raw=true"></div>
 
 
-#### What is recommender System?
+## Overview:
+What is recommender System?
 
 - Based on previous(past) behaviours, it predicts the likelihood that a user would prefer an item.
 - For example, Netflix uses recommendation system. It suggest people new movies according to their past activities that are like watching and voting movies.
