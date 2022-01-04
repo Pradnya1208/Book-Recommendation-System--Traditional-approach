@@ -207,6 +207,12 @@ distances, indices = model_knn.kneighbors(user_book_df.iloc[book_index,:].values
 #### Recommendations:
 <img src= "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/knn.PNG?raw=true">
 
+### Comparing all the methods:
+**Results for the book: "Harry Potter and the Order of the Phoenix (Book 5)"**
+<br>
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/comp.PNG?raw=true">
+
+
 
 [1]: https://github.com/Pradnya1208
 [2]: https://www.linkedin.com/in/pradnya-patil-b049161ba/
