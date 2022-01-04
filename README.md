@@ -41,6 +41,17 @@ What is recommender System?
 `Matrix Factorization based algorithm`<br>
 `Deep Learning methods`<br>
 
+#### Similarity Metrics:
+They are mathematical measures which are used to determine how similar is a vector to a given vector.
+Similarity metrics used mostly:<br>
+- **Cosine Similarity**: The Cosine angle between the vectors.
+- **Dot Product**: The cosine angle and magnitude of the vectors also matters.
+- **Euclidian Distance**: The elementwise squared distance between two vectors
+- **Pearson Similarity**: It is a coefficient given by:
+<img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/pearson.PNG?raw=true" width="40%">
+
+
+
 ## Objective:
 This project aims at finding the multiple ways that our data can recommend books.
 ## Dataset:
