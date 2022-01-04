@@ -14,6 +14,7 @@
 </div>
 
 # <div align="center">Book Recommendation System</div>
+<div align = "center"> <img src = "https://github.com/Pradnya1208/Book-Recommendation-System/blob/main/output/gif.gif?raw=true"></div>
 
 
 ## Overview:
