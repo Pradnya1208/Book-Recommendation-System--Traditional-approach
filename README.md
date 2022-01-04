@@ -226,7 +226,7 @@ distances, indices = model_knn.kneighbors(user_book_df.iloc[book_index,:].values
 
 
 ## References:
-[Recommendation systems](https://towardsdatascience.com/introduction-to-recommender-systems-1-971bd274f421)
+[Recommendation systems](https://towardsdatascience.com/introduction-to-recommender-systems-1-971bd274f421)<br>
 [Recommender systems tutorial](https://www.kaggle.com/kanncaa1/recommendation-systems-tutorial)
 
 ### Feedback
